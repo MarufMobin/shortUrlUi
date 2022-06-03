@@ -13,7 +13,7 @@ function Input() {
     const handleDb = async() => {
         const slug = tinyid.unique()
 
-        let url  = `https://simplifireurl.herokuapp.com/urllist`;
+        let url  = `http://localhost:5000/urllist`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -40,7 +40,6 @@ function Input() {
             <h1 className='mt-5 text-center'><span className='short-dec'>#</span>URL <span className='short-dec'>Shortener</span></h1>
             <center>
             <div className='mt-4'>
-                <input type="text" disabled className='form-control' value={shorten}/>
                 <input type="url" value={input} onChange={e=> setInput(e.target.value)} className='form-control mt-3'placeholder='Enter URL' name='url' />
                 <button onClick={handleDb} className='btn btn-dark mt-3'>Shorten URL</button>
             </div>
@@ -50,7 +49,9 @@ function Input() {
                         <tr>
                         <th scope="col">#SL.</th>
                         <th scope="col">Original Link</th>
+                        <th scope="col">Visited</th>
                         <th scope="col">Short Link</th>
+                        <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,7 +60,8 @@ function Input() {
                                 allUrl?.map(( item, index )=> <tr key={index}>
                                         <td>{++index}</td>
                                         <td>{item?.url}</td>
-                                        <td> <CopyText text={`https://simplifireurl.herokuapp.com/${item.uniq}`} /> </td>
+                                        <td><a href={`http://localhost:5000/${item.uniq}`}  target="_blank" className='text-whilte' style={{color:"#fff"}}>Visite</a></td>
+                                        <td> <CopyText text={`http://localhost:5000/${item.uniq}`} /> </td>
                                         <td><span className='btn btn-danger' onClick={ () => handleDelete(index) }>Dlete</span></td>
                                     </tr>)
                             }
