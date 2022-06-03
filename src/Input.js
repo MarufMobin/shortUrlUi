@@ -49,7 +49,6 @@ function Input() {
                         <tr>
                         <th scope="col">#SL.</th>
                         <th scope="col">Original Link</th>
-                        <th scope="col">Visited</th>
                         <th scope="col">Short Link</th>
                         <th scope="col">Action</th>
                         </tr>
@@ -60,9 +59,12 @@ function Input() {
                                 allUrl?.map(( item, index )=> <tr key={index}>
                                         <td>{++index}</td>
                                         <td>{item?.url}</td>
-                                        <td><a href={`http://localhost:5000/${item.uniq}`}  target="_blank" className='text-whilte' style={{color:"#fff"}}>Visite</a></td>
-                                        <td> <CopyText text={`http://localhost:5000/${item.uniq}`} /> </td>
-                                        <td><span className='btn btn-danger' onClick={ () => handleDelete(index) }>Dlete</span></td>
+                                        <td><a href={`http://localhost:5000/${item.uniq}`}  target="_blank" className='text-whilte' style={{color:"#fff"}}>{`http://localhost:5000/${item.uniq}`}</a></td>
+                                      
+                                        <td className='d-flex justify-content-center align-item-center'>
+                                        <span className='mx-3'><CopyText text={`http://localhost:5000/${item.uniq}`} /></span>
+                                            <span className='btn btn-danger' onClick={ () => handleDelete(index) }>Dlete</span>
+                                            </td>
                                     </tr>)
                             }
                 </tbody>

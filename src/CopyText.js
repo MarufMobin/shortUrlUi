@@ -12,12 +12,12 @@ class CopyText extends Component {
             <div className='d-flex justify-content-between align-item-center'>
             <CopyToClipboard text={this.state.value}
                 onCopy={() => this.setState({copied: true})}>
-                <span>{this.props.text}</span>
+                <span className='d-none'>{this.props.text}</span>
                 </CopyToClipboard>
 
                 <CopyToClipboard text={this.props.text}
                 onCopy={() => this.setState({copied: true})}>
-                <button className='dtn btn-info rounded-2 mx-3'>Copy</button>
+                <button className='btn btn-info rounded-2 mx-3'>Copy</button>
                 </CopyToClipboard>
 
                 {this.state.copied ? <span style={{color: 'f06604', marginLeft: "10px"}} >Copied.</span> : null}
