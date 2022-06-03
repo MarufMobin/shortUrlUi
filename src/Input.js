@@ -31,7 +31,10 @@ function Input() {
         setInput(' ')
      
     }
-
+    const handleDelete = event =>{
+        const remainingItem = allUrl.filter( (i,index) => ++index != event )
+        setAlUrl(remainingItem)
+    }
     return (
         <div className='container parent-container'>
             <h1 className='mt-5 text-center'><span className='short-dec'>#</span>URL <span className='short-dec'>Shortener</span></h1>
@@ -54,9 +57,10 @@ function Input() {
                     
                             {
                                 allUrl?.map(( item, index )=> <tr key={index}>
-                                    <td>{++index}</td>
-                                    <td>{item?.url}</td>
-                                    <td> <CopyText text={`https://simplifireurl.herokuapp.com/${item.uniq}`} /> </td>
+                                        <td>{++index}</td>
+                                        <td>{item?.url}</td>
+                                        <td> <CopyText text={`https://simplifireurl.herokuapp.com/${item.uniq}`} /> </td>
+                                        <td><span className='btn btn-danger' onClick={ () => handleDelete(index) }>Dlete</span></td>
                                     </tr>)
                             }
                 </tbody>
